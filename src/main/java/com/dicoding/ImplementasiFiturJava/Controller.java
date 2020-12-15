@@ -1,4 +1,4 @@
-package com.dicoding.linebotjava;
+package com.dicoding.ImplementasiFiturJava;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linecorp.bot.client.LineMessagingClient;
