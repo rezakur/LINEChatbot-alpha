@@ -58,7 +58,7 @@ public class Controller {
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
                     List<Message> msgArray = new ArrayList<>();
-                    msgArray.add(new TextMessage(textMessageContent.getText()));
+                    msgArray.add(new TextMessage("tes dicoba"));
                     msgArray.add(new StickerMessage("1", "114"));
                     ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     reply(replyMessage);
