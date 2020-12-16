@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.LineSignatureValidator;
 import com.linecorp.bot.model.ReplyMessage;
+import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
@@ -16,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
@@ -53,12 +56,20 @@ public class Controller {
                 if (event instanceof MessageEvent) {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
-                    if(textMessageContent.getText() == "sticker"){
+
+                    //List<Message> msgArray = new ArrayList<>();
+                    //msgArray.add(new TextMessage(textMessageContent.getText()));
+                   //msgArray.add(new StickerMessage("1", "106"));
+                    //ReplyMessage replyMessage = new ReplyMessage(event.getReplyToken(), msgArray);
+                   //reply(replyMessage);
+
+                    if(textMessageContent.getText().equalsIgnoreCase("sticker")){
                         replySticker(messageEvent.getReplyToken(), "1", "114");
                     }else{
                         replyText(messageEvent.getReplyToken(), "Selamat datang");
                     }
                 }
+
             });
 
 
@@ -87,4 +98,5 @@ public class Controller {
         ReplyMessage replyMessage = new ReplyMessage(replyToken, stickerMessage);
         reply(replyMessage);
     }
+
 }
