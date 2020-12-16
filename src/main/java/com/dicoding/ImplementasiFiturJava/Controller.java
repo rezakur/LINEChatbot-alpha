@@ -53,7 +53,7 @@ public class Controller {
                 if (event instanceof MessageEvent) {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
-                    replyText(messageEvent.getReplyToken(), "Assalamu'alaikum warahmatullahi wabarakatuh *nada ceramah. Terimakasih sudah menambahkan kami sebagai partner belajar sirah nabawiyah-mu. Semoga kita bisa sama-sama menjadikan Rasulullah صلى اللّه عليه و سلّم sebagai suri tauladan dalam semua sisi kehidupan kita");
+                    replyText(messageEvent.getReplyToken(), "Assalamu'alaikum warahmatullahi wabarakatuh *nada ceramah. Perkenalkan saya al-munawwir, chatbot buatan OrionTechnoX yang dapat membantumu mempelajari sirah nabawiyah. Terimakasih sudah menambahkan kami sebagai partner belajar sirah nabawiyah-mu. Semoga kita bisa sama-sama menjadikan Rasulullah صلى اللّه عليه و سلّم sebagai suri tauladan dalam semua sisi kehidupan kita");
                     replySticker(messageEvent.getReplyToken(), "1", "114");
                 }
             });
