@@ -57,11 +57,11 @@ public class Controller {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    //List<Message> msgArray = new ArrayList<>();
-                    //msgArray.add(new TextMessage(textMessageContent.getText()));
-                   //msgArray.add(new StickerMessage("1", "106"));
-                    //ReplyMessage replyMessage = new ReplyMessage(event.getReplyToken(), msgArray);
-                   //reply(replyMessage);
+                    List<Message> msgArray = new ArrayList<>();
+                    msgArray.add(new TextMessage(textMessageContent.getText()));
+                    msgArray.add(new StickerMessage("1", "114"));
+                    ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
+                    reply(replyMessage);
 
                     if(textMessageContent.getText().equalsIgnoreCase("sticker")){
                         replySticker(messageEvent.getReplyToken(), "1", "114");
