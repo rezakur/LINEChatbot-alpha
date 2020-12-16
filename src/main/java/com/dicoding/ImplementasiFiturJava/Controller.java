@@ -36,6 +36,7 @@ public class Controller {
     @Autowired
     @Qualifier("lineSignatureValidator")
     private LineSignatureValidator lineSignatureValidator;
+    private String textMsg;
 
 
     @RequestMapping(value="/webhook", method= RequestMethod.POST)
@@ -58,9 +59,9 @@ public class Controller {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    StickerMessage stickerMessage = new StickerMessage("1", "114");
+                    TextMessage textMessage = new TextMessage(textMsg);
                     String sourceId = "rezaa160";
-                    PushMessage pushMessage = new PushMessage(sourceId,stickerMessage);
+                    PushMessage pushMessage = new PushMessage(sourceId,textMessage);
                     push(pushMessage);
 
                     //List<Message> msgArray = new ArrayList<>();
