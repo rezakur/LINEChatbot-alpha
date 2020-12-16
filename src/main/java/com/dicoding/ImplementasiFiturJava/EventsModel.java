@@ -16,9 +16,14 @@ public class EventsModel {
     @JsonCreator
     public EventsModel(@JsonProperty("events") List<Event> events) {
         this.events = events != null ? events : Collections.emptyList();
+
     }
 
     public List<Event> getEvents() {
         return events;
     }
+
+
+
 }
+
