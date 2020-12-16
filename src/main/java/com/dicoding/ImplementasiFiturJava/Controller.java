@@ -3,6 +3,7 @@ package com.dicoding.ImplementasiFiturJava;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.LineSignatureValidator;
+import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
@@ -57,11 +58,16 @@ public class Controller {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    List<Message> msgArray = new ArrayList<>();
-                    msgArray.add(new TextMessage("tes dicoba"));
-                    msgArray.add(new StickerMessage("1", "114"));
-                    ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
-                    reply(replyMessage);
+                    StickerMessage stickerMessage = new StickerMessage("1", "114");
+                    String sourceId = "rezaa160";
+                    PushMessage pushMessage = new PushMessage(sourceId,stickerMessage);
+                    push(pushMessage);
+
+                    //List<Message> msgArray = new ArrayList<>();
+                    //msgArray.add(new TextMessage("tes dicoba"));
+                    //msgArray.add(new StickerMessage("1", "114"));
+                    //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
+                    //reply(replyMessage);
 
                     if(textMessageContent.getText().equalsIgnoreCase("sticker")){
                         replySticker(messageEvent.getReplyToken(), "1", "114");
@@ -79,6 +85,20 @@ public class Controller {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(value="/pushmessage/{id}/{message}", method=RequestMethod.GET)
+    public ResponseEntity<String> pushmessage(
+            @PathVariable("id") String userId,
+            @PathVariable("message") String textMsg
+    ){
+        TextMessage textMessage = new TextMessage(textMsg);
+        PushMessage pushMessage = new PushMessage(userId, textMessage);
+        push(pushMessage);
+
+
+        return new ResponseEntity<String>("Push message:"+textMsg+"\nsent to: "+userId, HttpStatus.OK);
+    }
+
     private void reply(ReplyMessage replyMessage) {
         try {
             lineMessagingClient.replyMessage(replyMessage).get();
@@ -97,6 +117,14 @@ public class Controller {
         StickerMessage stickerMessage = new StickerMessage(packageId, stickerId);
         ReplyMessage replyMessage = new ReplyMessage(replyToken, stickerMessage);
         reply(replyMessage);
+    }
+
+    private void push(PushMessage pushMessage){
+        try {
+            lineMessagingClient.pushMessage(pushMessage).get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
