@@ -85,7 +85,7 @@ public class Controller {
                     if(textMessageContent.getText().equalsIgnoreCase("sticker")){
                         replySticker(messageEvent.getReplyToken(), "1", "114");
                     }else{
-                        replyText(messageEvent.getReplyToken(), "Selamat datang");
+                        replyText(messageEvent.getReplyToken(), "Asyiap");
                     }
                 }
 
