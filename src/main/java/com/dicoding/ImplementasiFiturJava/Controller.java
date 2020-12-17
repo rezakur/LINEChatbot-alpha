@@ -12,6 +12,7 @@ import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.model.objectmapper.ModelObjectMapper;
+import com.linecorp.bot.model.profile.UserProfileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -116,6 +117,23 @@ public class Controller {
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ResponseEntity<String> profile(){
+        String userId = "Uabb9a2257d767aba284d917a378884be";
+        UserProfileResponse profile = getProfile(userId);
+
+        if (profile != null) {
+            String profileName = profile.getDisplayName();
+            TextMessage textMessage = new TextMessage("Hello, " + profileName);
+            PushMessage pushMessage = new PushMessage(userId, textMessage);
+            push(pushMessage);
+
+            return new ResponseEntity<String>("Hello, "+profileName, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+    }
+
 
     //@RequestMapping(value="/pushmessage/{id}/{message}", method=RequestMethod.GET)
     //public ResponseEntity<String> pushmessage(
@@ -161,12 +179,20 @@ public class Controller {
         }
     }
 
-    //private void push(PushMessage pushMessage){
-        //try {
-            //lineMessagingClient.pushMessage(pushMessage).get();
-        //} catch (InterruptedException | ExecutionException e) {
-         //   throw new RuntimeException(e);
-       // }
-    //}
+    private UserProfileResponse getProfile(String userId){
+        try {
+            return lineMessagingClient.getProfile(userId).get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void push(PushMessage pushMessage){
+        try {
+            lineMessagingClient.pushMessage(pushMessage).get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+       }
+    }
 
 }
