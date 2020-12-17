@@ -63,8 +63,8 @@ public class Controller {
 
                     String[] userIdList = {
                             "Uabb9a2257d767aba284d917a378884be",
-                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            "U4d34cb185d4ec3b8d80c4e5f9f1f1aab",
+                            "U8dfe52c73c5dd89f2350048edfb05f70",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                     };
@@ -103,8 +103,8 @@ public class Controller {
     public ResponseEntity<String> multicast(){
         String[] userIdList = {
                 "Uabb9a2257d767aba284d917a378884be",
-                //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "U4d34cb185d4ec3b8d80c4e5f9f1f1aab",
+                "U8dfe52c73c5dd89f2350048edfb05f70",
                 //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                 };
