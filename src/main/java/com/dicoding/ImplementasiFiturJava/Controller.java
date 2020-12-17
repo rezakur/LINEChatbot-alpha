@@ -8,6 +8,8 @@ import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.message.*;
+import com.linecorp.bot.model.event.source.GroupSource;
+import com.linecorp.bot.model.event.source.RoomSource;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.message.TextMessage;
@@ -94,23 +96,29 @@ public class Controller {
                         //replyText(messageEvent.getReplyToken(), "Asyiap");
                     //}
 
-                    if  ((  (MessageEvent) event).getMessage() instanceof AudioMessageContent
-                            || ((MessageEvent) event).getMessage() instanceof ImageMessageContent
-                            || ((MessageEvent) event).getMessage() instanceof VideoMessageContent
-                            || ((MessageEvent) event).getMessage() instanceof FileMessageContent
-                    ) {
-                        String baseURL     = "https://al-munawwir.herokuapp.com";
-                        String contentURL  = baseURL+"/content/"+ ((MessageEvent) event).getMessage().getId();
-                        String contentType = ((MessageEvent) event).getMessage().getClass().getSimpleName();
-                        String textMsg     = contentType.substring(0, contentType.length() -14)
-                                + " yang kamu kirim bisa diakses dari link:\n "
-                                + contentURL;
+                    //if  ((  (MessageEvent) event).getMessage() instanceof AudioMessageContent
+                            //|| ((MessageEvent) event).getMessage() instanceof ImageMessageContent
+                            //|| ((MessageEvent) event).getMessage() instanceof VideoMessageContent
+                            //|| ((MessageEvent) event).getMessage() instanceof FileMessageContent
+                   // ) {
+                      //  String baseURL     = "https://al-munawwir.herokuapp.com";
+                       // String contentURL  = baseURL+"/content/"+ ((MessageEvent) event).getMessage().getId();
+                       // String contentType = ((MessageEvent) event).getMessage().getClass().getSimpleName();
+                       // String textMsg     = contentType.substring(0, contentType.length() -14)
+                               // + " yang kamu kirim bisa diakses dari link:\n "
+                               // + contentURL;
 
-                        replyText(((MessageEvent) event).getReplyToken(), textMsg);
+                       // replyText(((MessageEvent) event).getReplyToken(), textMsg);
+                   // } else {
+                   //     MessageEvent messageEvent = (MessageEvent) event;
+                   //     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
+                    //    replyText(messageEvent.getReplyToken(), textMessageContent.getText());
+                   // }
+
+                    if (event.getSource() instanceof GroupSource || event.getSource() instanceof RoomSource) {
+                        handleGroupRoomChats((MessageEvent) event);
                     } else {
-                        MessageEvent messageEvent = (MessageEvent) event;
-                        TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
-                        replyText(messageEvent.getReplyToken(), textMessageContent.getText());
+                        handleOneOnOneChats((MessageEvent) event);
                     }
 
                 }
@@ -181,18 +189,18 @@ public class Controller {
     }
 
 
-    //@RequestMapping(value="/pushmessage/{id}/{message}", method=RequestMethod.GET)
-    //public ResponseEntity<String> pushmessage(
-           //@PathVariable("id") String userId,
-           //@PathVariable("message") String textMsg)
-    //{
-      //TextMessage textMessage = new TextMessage(textMsg);
-      //PushMessage pushMessage = new PushMessage(userId, textMessage);
-        //push(pushMessage);
+    @RequestMapping(value="/pushmessage/{id}/{message}", method=RequestMethod.GET)
+    public ResponseEntity<String> pushmessage(
+           @PathVariable("id") String userId,
+           @PathVariable("message") String textMsg)
+    {
+      TextMessage textMessage = new TextMessage(textMsg);
+      PushMessage pushMessage = new PushMessage(userId, textMessage);
+        push(pushMessage);
 
 
-       //return new ResponseEntity<String>("Push message:"+textMsg+"\nsent to: "+userId, HttpStatus.OK);
-    //}
+       return new ResponseEntity<String>("Push message:"+textMsg+"\nsent to: "+userId, HttpStatus.OK);
+    }
 
     private void reply(ReplyMessage replyMessage) {
         try {
@@ -249,5 +257,18 @@ public class Controller {
         }
     }
 
+    private void handleOneOnOneChats(MessageEvent event) {
+
+    }
+
+    private void handleGroupRoomChats(MessageEvent event) {
+        if(!event.getSource().getUserId().isEmpty()) {
+            String userId = event.getSource().getUserId();
+            UserProfileResponse profile = getProfile(userId);
+            replyText(event.getReplyToken(), "Hello, " + profile.getDisplayName());
+        } else {
+            replyText(event.getReplyToken(), "Hello, what is your name?");
+        }
+    }
 
 }
