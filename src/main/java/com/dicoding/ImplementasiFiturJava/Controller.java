@@ -62,7 +62,7 @@ public class Controller {
                     System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
 
                     String[] userIdList = {
-                            "U3f959afa5c3da0e67a87202a7bbeeddd",
+                            "Uabb9a2257d767aba284d917a378884be",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -102,7 +102,7 @@ public class Controller {
     @RequestMapping(value="/multicast", method=RequestMethod.GET)
     public ResponseEntity<String> multicast(){
         String[] userIdList = {
-                "U3f959afa5c3da0e67a87202a7bbeeddd",
+                "Uabb9a2257d767aba284d917a378884be",
                 //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
