@@ -3,6 +3,7 @@ package com.dicoding.ImplementasiFiturJava;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.LineSignatureValidator;
+import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.message.Message;
@@ -18,8 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 
@@ -59,10 +59,22 @@ public class Controller {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    TextMessage textMessage = new TextMessage(textMsg);
-                    String sourceId = "Uabb9a2257d767aba284d917a378884be";
-                    PushMessage pushMessage = new PushMessage(sourceId,textMessage);
-                    push(pushMessage);
+                    System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
+
+                    String[] userIdList = {
+                            "U206d25c2ea6bd87c17655609xxxxxxxx",
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                    };
+
+                    Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
+
+                    //TextMessage textMessage = new TextMessage(textMsg);
+                    //String sourceId = "Uabb9a2257d767aba284d917a378884be";
+                    //PushMessage pushMessage = new PushMessage(sourceId,textMessage);
+                   //push(pushMessage);
 
                     //List<Message> msgArray = new ArrayList<>();
                     //msgArray.add(new TextMessage("tes dicoba"));
@@ -87,18 +99,35 @@ public class Controller {
         }
     }
 
-    @RequestMapping(value="/pushmessage/{id}/{message}", method=RequestMethod.GET)
-    public ResponseEntity<String> pushmessage(
-            @PathVariable("id") String userId,
-            @PathVariable("message") String textMsg
-    ){
-        TextMessage textMessage = new TextMessage(textMsg);
-        PushMessage pushMessage = new PushMessage(userId, textMessage);
-        push(pushMessage);
-
-
-        return new ResponseEntity<String>("Push message:"+textMsg+"\nsent to: "+userId, HttpStatus.OK);
+    @RequestMapping(value="/multicast", method=RequestMethod.GET)
+    public ResponseEntity<String> multicast(){
+        String[] userIdList = {
+                "U206d25c2ea6bd87c17655609xxxxxxxx",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"};
+        Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
+        if(listUsers.size() > 0){
+            String textMsg = "Ini pesan multicast";
+            sendMulticast(listUsers, textMsg);
+        }
+        return new ResponseEntity<String>(HttpStatus.OK);
     }
+
+
+    //@RequestMapping(value="/pushmessage/{id}/{message}", method=RequestMethod.GET)
+    //public ResponseEntity<String> pushmessage(
+           //@PathVariable("id") String userId,
+           //@PathVariable("message") String textMsg)
+    //{
+      //TextMessage textMessage = new TextMessage(textMsg);
+      //PushMessage pushMessage = new PushMessage(userId, textMessage);
+        //push(pushMessage);
+
+
+       //return new ResponseEntity<String>("Push message:"+textMsg+"\nsent to: "+userId, HttpStatus.OK);
+    //}
 
     private void reply(ReplyMessage replyMessage) {
         try {
@@ -120,12 +149,23 @@ public class Controller {
         reply(replyMessage);
     }
 
-    private void push(PushMessage pushMessage){
+    private void sendMulticast(Set<String> sourceUsers, String txtMessage){
+        TextMessage message = new TextMessage(txtMessage);
+        Multicast multicast = new Multicast(sourceUsers, message);
+
         try {
-            lineMessagingClient.pushMessage(pushMessage).get();
+            lineMessagingClient.multicast(multicast).get();
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
     }
+
+    //private void push(PushMessage pushMessage){
+        //try {
+            //lineMessagingClient.pushMessage(pushMessage).get();
+        //} catch (InterruptedException | ExecutionException e) {
+         //   throw new RuntimeException(e);
+       // }
+    //}
 
 }
