@@ -62,11 +62,11 @@ public class Controller {
                     System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
 
                     String[] userIdList = {
-                            "U206d25c2ea6bd87c17655609xxxxxxxx",
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                            "13216940473809",
+                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                     };
 
                     Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
@@ -102,14 +102,15 @@ public class Controller {
     @RequestMapping(value="/multicast", method=RequestMethod.GET)
     public ResponseEntity<String> multicast(){
         String[] userIdList = {
-                "U206d25c2ea6bd87c17655609xxxxxxxx",
-                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"};
+                "13216940473809",
+                //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                };
         Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
         if(listUsers.size() > 0){
-            String textMsg = "Ini pesan multicast";
+            String textMsg = "Tes satu dua dicoba";
             sendMulticast(listUsers, textMsg);
         }
         return new ResponseEntity<String>(HttpStatus.OK);
