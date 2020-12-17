@@ -3,22 +3,27 @@ package com.dicoding.ImplementasiFiturJava;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.client.LineSignatureValidator;
+import com.linecorp.bot.client.MessageContentResponse;
 import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
+import com.linecorp.bot.model.event.message.*;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.event.MessageEvent;
-import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.model.objectmapper.ModelObjectMapper;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -56,20 +61,21 @@ public class Controller {
 
             eventsModel.getEvents().forEach((event)->{
                 if (event instanceof MessageEvent) {
-                    MessageEvent messageEvent = (MessageEvent) event;
-                    TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
+                    //MessageEvent messageEvent = (MessageEvent) event;
+                    //TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    String[] userIdList = {
-                            "Uabb9a2257d767aba284d917a378884be",
-                            "U4d34cb185d4ec3b8d80c4e5f9f1f1aab",
-                            "U8dfe52c73c5dd89f2350048edfb05f70",
+                    //System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
+
+                    //String[] userIdList = {
+                            //"Uabb9a2257d767aba284d917a378884be",
+                            //"U4d34cb185d4ec3b8d80c4e5f9f1f1aab",
+                            //"U8dfe52c73c5dd89f2350048edfb05f70",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                             //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                    };
+                    //};
 
-                    Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
+                    //Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
 
                     //TextMessage textMessage = new TextMessage(textMsg);
                     //String sourceId = "Uabb9a2257d767aba284d917a378884be";
@@ -82,11 +88,31 @@ public class Controller {
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
-                    if(textMessageContent.getText().equalsIgnoreCase("sticker")){
-                        replySticker(messageEvent.getReplyToken(), "1", "114");
-                    }else{
-                        replyText(messageEvent.getReplyToken(), "Asyiap");
+                    //if(textMessageContent.getText().equalsIgnoreCase("sticker")){
+                        //replySticker(messageEvent.getReplyToken(), "1", "114");
+                    //}else{
+                        //replyText(messageEvent.getReplyToken(), "Asyiap");
+                    //}
+
+                    if  ((  (MessageEvent) event).getMessage() instanceof AudioMessageContent
+                            || ((MessageEvent) event).getMessage() instanceof ImageMessageContent
+                            || ((MessageEvent) event).getMessage() instanceof VideoMessageContent
+                            || ((MessageEvent) event).getMessage() instanceof FileMessageContent
+                    ) {
+                        String baseURL     = "https://contohlinebotjava.herokuapp.com";
+                        String contentURL  = baseURL+"/content/"+ ((MessageEvent) event).getMessage().getId();
+                        String contentType = ((MessageEvent) event).getMessage().getClass().getSimpleName();
+                        String textMsg     = contentType.substring(0, contentType.length() -14)
+                                + " yang kamu kirim bisa diakses dari link:\n "
+                                + contentURL;
+
+                        replyText(((MessageEvent) event).getReplyToken(), textMsg);
+                    } else {
+                        MessageEvent messageEvent = (MessageEvent) event;
+                        TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
+                        replyText(messageEvent.getReplyToken(), textMessageContent.getText());
                     }
+
                 }
 
             });
@@ -98,6 +124,27 @@ public class Controller {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(value = "/content/{id}", method = RequestMethod.GET)
+    public ResponseEntity content(
+            @PathVariable("id") String messageId
+    ){
+        MessageContentResponse messageContent = getContent(messageId);
+
+        if(messageContent != null) {
+            HttpHeaders headers = new HttpHeaders();
+            String[] mimeType = messageContent.getMimeType().split("/");
+            headers.setContentType(new MediaType(mimeType[0], mimeType[1]));
+
+            InputStream inputStream = messageContent.getStream();
+            InputStreamResource inputStreamResource = new InputStreamResource(inputStream);
+
+            return new ResponseEntity<>(inputStreamResource, headers, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
     @RequestMapping(value="/multicast", method=RequestMethod.GET)
     public ResponseEntity<String> multicast(){
@@ -193,5 +240,14 @@ public class Controller {
             throw new RuntimeException(e);
        }
     }
+
+    private MessageContentResponse getContent(String messageId) {
+        try {
+            return lineMessagingClient.getMessageContent(messageId).get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
