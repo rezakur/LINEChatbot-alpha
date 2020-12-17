@@ -6,7 +6,6 @@ import com.linecorp.bot.client.LineSignatureValidator;
 import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
-import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
@@ -117,9 +116,10 @@ public class Controller {
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ResponseEntity<String> profile(){
-        String userId = "Uabb9a2257d767aba284d917a378884be";
+    @RequestMapping(value = "/profile/{id}", method = RequestMethod.GET)
+    public ResponseEntity<String> profile(
+            @PathVariable("id") String userId
+    ){
         UserProfileResponse profile = getProfile(userId);
 
         if (profile != null) {
@@ -130,7 +130,6 @@ public class Controller {
 
             return new ResponseEntity<String>("Hello, "+profileName, HttpStatus.OK);
         }
-
         return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
     }
 
