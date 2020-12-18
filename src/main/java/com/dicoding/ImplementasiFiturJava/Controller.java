@@ -10,11 +10,14 @@ import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.message.*;
 import com.linecorp.bot.model.event.source.GroupSource;
 import com.linecorp.bot.model.event.source.RoomSource;
+import com.linecorp.bot.model.message.FlexMessage;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.model.message.flex.container.FlexContainer;
 import com.linecorp.bot.model.objectmapper.ModelObjectMapper;
 import com.linecorp.bot.model.profile.UserProfileResponse;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.InputStreamResource;
@@ -259,6 +262,39 @@ public class Controller {
 
     private void handleOneOnOneChats(MessageEvent event) {
 
+        if  (event.getMessage() instanceof AudioMessageContent
+                || event.getMessage() instanceof ImageMessageContent
+                || event.getMessage() instanceof VideoMessageContent
+                || event.getMessage() instanceof FileMessageContent
+        ) {
+            handleContentMessage(event);
+        } else if(event.getMessage() instanceof TextMessageContent) {
+            handleTextMessage(event);
+        } else {
+            replyText(event.getReplyToken(), "Unknown Message");
+        }
+
+    }
+
+    private void handleContentMessage(MessageEvent event) {
+        String baseURL     = "https://al-munawwir.herokuapp.com";
+        String contentURL  = baseURL+"/content/"+ event.getMessage().getId();
+        String contentType = event.getMessage().getClass().getSimpleName();
+        String textMsg     = contentType.substring(0, contentType.length() -14)
+                + " yang kamu kirim bisa diakses dari link:\n "
+                + contentURL;
+
+        replyText(event.getReplyToken(), textMsg);
+    }
+
+    private void handleTextMessage(MessageEvent event) {
+        TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
+
+        if (textMessageContent.getText().toLowerCase().contains("flex")) {
+            replyFlexMessage(event.getReplyToken());
+        } else {
+            replyText(event.getReplyToken(), textMessageContent.getText());
+        }
     }
 
     private void handleGroupRoomChats(MessageEvent event) {
@@ -268,6 +304,23 @@ public class Controller {
             replyText(event.getReplyToken(), "Hello, " + profile.getDisplayName());
         } else {
             replyText(event.getReplyToken(), "Hello, what is your name?");
+        }
+    }
+
+    private void replyFlexMessage(String replyToken) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message.json"));
+
+
+            ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Dicoding Academy", flexContainer));
+            reply(replyMessage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
