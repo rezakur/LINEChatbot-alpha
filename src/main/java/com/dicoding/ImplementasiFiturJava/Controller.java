@@ -317,7 +317,7 @@ public class Controller {
             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
 
-            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Dicoding Academy", flexContainer));
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Masa Kelahiran", flexContainer));
             reply(replyMessage);
         } catch (IOException e) {
             throw new RuntimeException(e);
