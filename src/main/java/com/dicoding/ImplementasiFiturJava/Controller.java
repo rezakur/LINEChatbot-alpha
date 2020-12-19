@@ -83,7 +83,11 @@ public class Controller {
                     }else if(textMessageContent.getText().equalsIgnoreCase("Referensi"))
                     {
                         replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Help")){
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Belajar Sirah")){
+                        replyFlexMessage(((MessageEvent<?>) event).getReplyToken());
+                    }
+
+                    else if(textMessageContent.getText().equalsIgnoreCase("Help")){
                         replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")){
                         replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke rezakurniawan432@gmail.com");
@@ -256,21 +260,21 @@ public class Controller {
         }
     }
 
-    private void handleOneOnOneChats(MessageEvent event) {
+   // private void handleOneOnOneChats(MessageEvent event) {
 
-        if  (event.getMessage() instanceof AudioMessageContent
-                || event.getMessage() instanceof ImageMessageContent
-                || event.getMessage() instanceof VideoMessageContent
-                || event.getMessage() instanceof FileMessageContent
-        ) {
-            handleContentMessage(event);
-        } else if(event.getMessage() instanceof TextMessageContent) {
-            handleTextMessage(event);
-        } else {
-            replyText(event.getReplyToken(), "Unknown Message");
-        }
+        //if  (event.getMessage() instanceof AudioMessageContent
+                //|| event.getMessage() instanceof ImageMessageContent
+                //|| event.getMessage() instanceof VideoMessageContent
+                //|| event.getMessage() instanceof FileMessageContent
+        //) {
+           // handleContentMessage(event);
+        //} else if(event.getMessage() instanceof TextMessageContent) {
+            //handleTextMessage(event);
+        //} else {
+            //replyText(event.getReplyToken(), "Unknown Message");
+        //}
 
-    }
+    //}
 
     private void handleContentMessage(MessageEvent event) {
         String baseURL     = "https://al-munawwir.herokuapp.com";
@@ -283,15 +287,15 @@ public class Controller {
         replyText(event.getReplyToken(), textMsg);
     }
 
-    private void handleTextMessage(MessageEvent event) {
-        TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
+    //private void handleTextMessage(MessageEvent event) {
+        //TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
 
-        if (textMessageContent.getText().toLowerCase().contains("Belajar Sirah")) {
-            replyFlexMessage(event.getReplyToken());
-        } else {
-            replyText(event.getReplyToken(), textMessageContent.getText());
-        }
-    }
+        //if (textMessageContent.getText().toLowerCase().contains("Belajar Sirah")) {
+            //replyFlexMessage(event.getReplyToken());
+        //} else {
+            //replyText(event.getReplyToken(), textMessageContent.getText());
+        //}
+    //}
 
     private void handleGroupRoomChats(MessageEvent event) {
         if(!event.getSource().getUserId().isEmpty()) {
