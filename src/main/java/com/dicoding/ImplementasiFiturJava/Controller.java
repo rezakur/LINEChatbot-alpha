@@ -70,7 +70,7 @@ public class Controller {
                     //MessageEvent messageEvent = (MessageEvent) event;
                     //TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    //System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
+                    System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
 
                     //String[] userIdList = {
                             //"Uabb9a2257d767aba284d917a378884be",
@@ -82,10 +82,7 @@ public class Controller {
 
                     //Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
 
-                    //TextMessage textMessage = new TextMessage(textMsg);
-                    //String sourceId = "Uabb9a2257d767aba284d917a378884be";
-                    //PushMessage pushMessage = new PushMessage(sourceId,textMessage);
-                   //push(pushMessage);
+
 
                     //List<Message> msgArray = new ArrayList<>();
                     //msgArray.add(new TextMessage("tes dicoba"));
