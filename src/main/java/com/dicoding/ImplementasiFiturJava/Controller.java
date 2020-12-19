@@ -67,22 +67,10 @@ public class Controller {
             eventsModel.getEvents().forEach((event)->{
                 if (event instanceof MessageEvent) {
 
-                    //MessageEvent messageEvent = (MessageEvent) event;
-                    //TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
+                    MessageEvent messageEvent = (MessageEvent) event;
+                    TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
                     System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
-
-                    //String[] userIdList = {
-                            //"Uabb9a2257d767aba284d917a378884be",
-                            //"U4d34cb185d4ec3b8d80c4e5f9f1f1aab",
-                            //"U8dfe52c73c5dd89f2350048edfb05f70",
-                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                            //"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                    //};
-
-                    //Set<String> listUsers = new HashSet<String>(Arrays.asList(userIdList));
-
-
 
                     //List<Message> msgArray = new ArrayList<>();
                     //msgArray.add(new TextMessage("tes dicoba"));
@@ -90,11 +78,22 @@ public class Controller {
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
-                    //if(textMessageContent.getText().equalsIgnoreCase("sticker")){
-                        //replySticker(messageEvent.getReplyToken(), "1", "114");
-                    //}else{
-                        //replyText(messageEvent.getReplyToken(), "Asyiap");
-                    //}
+                    if(textMessageContent.getText().equalsIgnoreCase("Repository")){
+                        replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di https://drive.google.com/drive/folders/1gm1jRubP4r6oWpEdmi_QW_xkrQdJjcF2?usp=sharing");
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Referensi"))
+                    {
+                        replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi");
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Help")){
+                        replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")){
+                        replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke rezakurniawan432@gmail.com");
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Tentang")){
+                        replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
+                    }else{
+                        replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai menu atau balas \"help\" untuk mendapat bantuan penggunaan");
+                    }
+
+
 
                     //if  ((  (MessageEvent) event).getMessage() instanceof AudioMessageContent
                             //|| ((MessageEvent) event).getMessage() instanceof ImageMessageContent
@@ -115,11 +114,11 @@ public class Controller {
                     //    replyText(messageEvent.getReplyToken(), textMessageContent.getText());
                    // }
 
-                    if (event.getSource() instanceof GroupSource || event.getSource() instanceof RoomSource) {
-                        handleGroupRoomChats((MessageEvent) event);
-                    } else {
-                        handleOneOnOneChats((MessageEvent) event);
-                    }
+                    //if (event.getSource() instanceof GroupSource || event.getSource() instanceof RoomSource) {
+                       // handleGroupRoomChats((MessageEvent) event);
+                    //} else {
+                      //  handleOneOnOneChats((MessageEvent) event);
+                   // }
 
                 }
 
@@ -287,7 +286,7 @@ public class Controller {
     private void handleTextMessage(MessageEvent event) {
         TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
 
-        if (textMessageContent.getText().toLowerCase().contains("flex")) {
+        if (textMessageContent.getText().toLowerCase().contains("Belajar Sirah")) {
             replyFlexMessage(event.getReplyToken());
         } else {
             replyText(event.getReplyToken(), textMessageContent.getText());
