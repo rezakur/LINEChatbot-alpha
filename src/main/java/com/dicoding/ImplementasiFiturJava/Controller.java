@@ -79,18 +79,17 @@ public class Controller {
                     //reply(replyMessage);
 
                     if(textMessageContent.getText().equalsIgnoreCase("Repository")){
-                        replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di https://drive.google.com/drive/folders/1gm1jRubP4r6oWpEdmi_QW_xkrQdJjcF2?usp=sharing");
+                        replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di http://bit.ly/almunawwir-library");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Referensi"))
                     {
                         replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Belajar Sirah")){
                         replyFlexMessage(((MessageEvent<?>) event).getReplyToken());
                     }
-
                     else if(textMessageContent.getText().equalsIgnoreCase("Help")){
                         replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")){
-                        replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke rezakurniawan432@gmail.com");
+                        replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke munawwirain2@gmail.com");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Tentang")){
                         replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
                     }else{
@@ -260,16 +259,16 @@ public class Controller {
         }
     }
 
-   // private void handleOneOnOneChats(MessageEvent event) {
+  //private void handleOneOnOneChats(MessageEvent event) {
 
-        //if  (event.getMessage() instanceof AudioMessageContent
-                //|| event.getMessage() instanceof ImageMessageContent
-                //|| event.getMessage() instanceof VideoMessageContent
-                //|| event.getMessage() instanceof FileMessageContent
+       // if  (event.getMessage() instanceof AudioMessageContent
+              //  || event.getMessage() instanceof ImageMessageContent
+              //  || event.getMessage() instanceof VideoMessageContent
+              //  || event.getMessage() instanceof FileMessageContent
         //) {
            // handleContentMessage(event);
-        //} else if(event.getMessage() instanceof TextMessageContent) {
-            //handleTextMessage(event);
+       // } else if(event.getMessage() instanceof TextMessageContent) {
+         //   handleTextMessage(event);
         //} else {
             //replyText(event.getReplyToken(), "Unknown Message");
         //}
@@ -291,11 +290,11 @@ public class Controller {
         //TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
 
         //if (textMessageContent.getText().toLowerCase().contains("Belajar Sirah")) {
-            //replyFlexMessage(event.getReplyToken());
+          //  replyFlexMessage(event.getReplyToken());
         //} else {
             //replyText(event.getReplyToken(), textMessageContent.getText());
-        //}
-    //}
+       // }
+   // }
 
     private void handleGroupRoomChats(MessageEvent event) {
         if(!event.getSource().getUserId().isEmpty()) {

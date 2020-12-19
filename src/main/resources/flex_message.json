@@ -1,110 +1,222 @@
 {
-  "type": "bubble",
-  "hero": {
-    "type": "image",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    },
-    "url": "https://cdn.pixabay.com/photo/2019/03/30/17/24/landscape-4091574_960_720.jpg"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "Masa Kelahiran",
-        "weight": "bold",
-        "size": "xl"
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "https://cdn.pixabay.com/photo/2019/03/30/17/24/landscape-4091574_960_720.jpg",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "http://linecorp.com/"
+        }
       },
-      {
+      "body": {
         "type": "box",
         "layout": "vertical",
-        "margin": "lg",
-        "spacing": "sm",
         "contents": [
           {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "text",
-                "text": "Place",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 1
-              },
-              {
-                "type": "text",
-                "text": "Mekah, Hijaz",
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5
-              }
-            ]
+            "type": "text",
+            "text": "Masa Kelahiran",
+            "size": "xl",
+            "weight": "bold",
+            "offsetBottom": "none",
+            "offsetStart": "none",
+            "offsetTop": "none"
           },
           {
             "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
+            "layout": "vertical",
             "contents": [
               {
-                "type": "text",
-                "text": "Time",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 1
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Place",
+                    "flex": 1,
+                    "size": "sm",
+                    "color": "#aaaaaa"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Mekah, Hijaz",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666",
+                    "wrap": true
+                  }
+                ]
               },
               {
-                "type": "text",
-                "text": "Senin, Rabi'ul Awwal Tahun Gajah (571 M)",
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Time",
+                    "flex": 1,
+                    "size": "sm",
+                    "color": "#aaaaaa",
+                    "offsetBottom": "none",
+                    "offsetTop": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Senin, Rabi'ul Awwal Tahun Gajah, 571 M",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666",
+                    "offsetTop": "sm"
+                  }
+                ]
               }
-            ]
+            ],
+            "paddingTop": "lg"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "BACA LEBIH LANJUT",
+              "uri": "http://linecorp.com/"
+            },
+            "style": "link",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "KUIS",
+              "text": "Kuis Masa Kelahiran"
+            },
+            "style": "link",
+            "height": "sm"
           }
         ]
       }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "sm",
-    "contents": [
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
+    },
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/909656/pexels-photo-909656.jpeg?cs=srgb&dl=pexels-walid-ahmad-909656.jpg&fm=jpg",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
         "action": {
           "type": "uri",
-          "label": "BACA LEBIH LANJUT",
-          "uri": "https://linecorp.com"
+          "label": "action",
+          "uri": "http://linecorp.com/"
         }
       },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "message",
-          "label": "KUIS",
-          "text": "hello"
-        }
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Masa Kecil",
+            "size": "xl",
+            "weight": "bold"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Place",
+                    "flex": 1,
+                    "size": "sm",
+                    "color": "#aaaaaa"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Mekah & Desa Bani Sa'ad",
+                    "flex": 5,
+                    "size": "sm",
+                    "offsetTop": "none",
+                    "color": "#666666"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Time",
+                    "flex": 1,
+                    "size": "sm",
+                    "color": "#aaaaaa"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Bayi - 12 Tahun",
+                    "color": "#666666",
+                    "flex": 5
+                  }
+                ]
+              }
+            ],
+            "spacing": "none",
+            "paddingTop": "lg"
+          }
+        ]
       },
-      {
-        "type": "spacer",
-        "size": "sm"
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "BACA LEBIH LANJUT",
+              "uri": "http://linecorp.com/"
+            },
+            "height": "sm",
+            "style": "link",
+            "offsetTop": "none"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "KUIS",
+              "text": "Kuis Masa Kecil"
+            },
+            "height": "sm",
+            "style": "link"
+          }
+        ]
       }
-    ],
-    "flex": 0
-  }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": []
+      }
+    }
+  ]
 }
