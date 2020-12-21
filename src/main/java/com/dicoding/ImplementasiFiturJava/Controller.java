@@ -102,8 +102,8 @@ public class Controller {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \4. Help \n5. Kritik dan Saran \n6. Tentang");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1. _____ \n2. _____ \n3. _____");
-                    }else if(textMessageContent.getText().equalsIgnoreCase(String.valueOf(Kunci1))) {
-                        replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1." + Jawaban1 );
+                    }else if(textMessageContent.getText().toLowerCase().contains(String.valueOf(Kunci1))) {
+                        replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi:" + Jawaban1 );
                     }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
