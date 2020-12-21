@@ -147,18 +147,18 @@ public class Controller {
                     }else if(textMessageContent.getText() == valueOf(Kunci1[i])) {
                         Jawaban1[i] = textMessageContent.getText();
                         replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi:" + Jawaban1[i]);
-                    }else if(((MessageEvent) event).getMessage() instanceof AudioMessageContent
-                        || ((MessageEvent) event).getMessage() instanceof ImageMessageContent
-                        || ((MessageEvent) event).getMessage() instanceof VideoMessageContent
-                        || ((MessageEvent) event).getMessage() instanceof FileMessageContent) {
-                        String baseURL = "https://al-munawwir.herokuapp.com";
-                        String contentURL = baseURL + "/content/" + ((MessageEvent) event).getMessage().getId();
-                        String contentType = ((MessageEvent) event).getMessage().getClass().getSimpleName();
-                        String textMsg = contentType.substring(0, contentType.length() - 14)
-                                + " yang kamu kirim bisa diakses dari link:\n "
-                                + contentURL;
-                        replyText(((MessageEvent) event).getReplyToken(), textMsg);
-                    }else{
+                    }//else if(((MessageEvent) event).getMessage() instanceof AudioMessageContent
+                        //|| ((MessageEvent) event).getMessage() instanceof ImageMessageContent
+                        //|| ((MessageEvent) event).getMessage() instanceof VideoMessageContent
+                        //|| ((MessageEvent) event).getMessage() instanceof FileMessageContent) {
+                        //String baseURL = "https://al-munawwir.herokuapp.com";
+                        //String contentURL = baseURL + "/content/" + ((MessageEvent) event).getMessage().getId();
+                        //String contentType = ((MessageEvent) event).getMessage().getClass().getSimpleName();
+                        //String textMsg = contentType.substring(0, contentType.length() - 14)
+                               // + " yang kamu kirim bisa diakses dari link:\n "
+                               // + contentURL;
+                       //replyText(((MessageEvent) event).getReplyToken(), textMsg);
+                    else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
 
                     }
