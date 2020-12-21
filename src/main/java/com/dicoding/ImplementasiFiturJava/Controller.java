@@ -47,8 +47,8 @@ public class Controller {
     @Qualifier("lineSignatureValidator")
     private LineSignatureValidator lineSignatureValidator;
     private String textMsg;
-    private String Kunci1;
-    private String Jawaban1;
+    private String[] Kunci1;
+    private String[] Jawaban1;
 
 
     @RequestMapping(value="/webhook", method= RequestMethod.POST)
@@ -72,10 +72,9 @@ public class Controller {
                     MessageEvent messageEvent = (MessageEvent) event;
                     TextMessageContent textMessageContent = (TextMessageContent) messageEvent.getMessage();
 
-                    System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
+                    //System.out.print("\n \n \n USERID DEBUG \n"+eventsPayload+"\n \n \n");
 
-                    String[] Kunci1 = new String[3];
-                    String[] Jawaban1 = new String[3];
+
                     Kunci1 = new String[]{"Tsuwaibah", "Halimah", "Bani Saad"};
                     Jawaban1 = new String[]{" ", " ", " "};
                     for(int i = 0; i < Kunci1.length; i++)
@@ -97,30 +96,30 @@ public class Controller {
                     //msgArray.add(new StickerMessage("1", "114"));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
-                    {
+
 
                         if (textMessageContent.getText().equalsIgnoreCase("Library")) {
                             replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di http://bit.ly/almunawwir_library");
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Referensi")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Referensi")) {
                             replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi \n2. Masa Kecil \nIsi");
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
                             replyFlexMessage(((MessageEvent<?>) event).getReplyToken());
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Help")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Help")) {
                             replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
                             replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke munawwirain2@gmail.com");
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Tentang")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Tentang")) {
                             replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Menu")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Menu")) {
                             replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \4. Help \n5. Kritik dan Saran \n6. Tentang");
-                        } else if (textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                             replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1. _____ \n2. _____ \n3. _____");
-                        } else if (textMessageContent.getText() == Kunci1[i]) {
+                        }else if (textMessageContent.getText() == Kunci1[i]) {
                             Jawaban1[i] = textMessageContent.getText();
                             replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi:" + Jawaban1[i]);
-                        } else {
+                        }else {
                             replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
-                        }
+
                     }
 
 
