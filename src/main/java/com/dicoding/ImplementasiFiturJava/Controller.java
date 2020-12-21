@@ -118,7 +118,7 @@ public class Controller {
                         Jawaban1[i]=textMessageContent.getText();
                         replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi:" + Jawaban1[i] );
                     }else{
-                        //replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
+                        replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
 
 
