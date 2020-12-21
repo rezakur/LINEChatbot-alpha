@@ -128,26 +128,32 @@ public class Controller {
                     //reply(replyMessage);
 
 
-                    if(textMessageContent.getText().equalsIgnoreCase("Library")) {
+                    if (textMessageContent.getText().equalsIgnoreCase("Library")) {
                         replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di http://bit.ly/almunawwir_library");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Referensi")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Referensi")) {
                         replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi \n2. Masa Kecil \nIsi");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
                         replyFlexMessage(((MessageEvent<?>) event).getReplyToken());
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Help")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Help")) {
                         replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
                         replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke munawwirain2@gmail.com");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Tentang")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Tentang")) {
                         replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Menu")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Menu")) {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \n4. Help \n5. Kritik dan Saran \n6. Tentang");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
+                    } else if (textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1. _____ \n2. _____ \n3. _____");
-                    }else if(textMessageContent.getText() == valueOf(Kunci1[i])) {
+                    } else if (textMessageContent.getText() == valueOf(Kunci1[i])) {
                         Jawaban1[i] = textMessageContent.getText();
                         replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi:" + Jawaban1[i]);
-                    }//else if(((MessageEvent) event).getMessage() instanceof AudioMessageContent
+                    } else {
+                        replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
+                    }
+
+
+
+                    //else if(((MessageEvent) event).getMessage() instanceof AudioMessageContent
                         //|| ((MessageEvent) event).getMessage() instanceof ImageMessageContent
                         //|| ((MessageEvent) event).getMessage() instanceof VideoMessageContent
                         //|| ((MessageEvent) event).getMessage() instanceof FileMessageContent) {
@@ -158,10 +164,7 @@ public class Controller {
                                // + " yang kamu kirim bisa diakses dari link:\n "
                                // + contentURL;
                        //replyText(((MessageEvent) event).getReplyToken(), textMsg);
-                    else{
-                        replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
 
-                    }
 
 
 
