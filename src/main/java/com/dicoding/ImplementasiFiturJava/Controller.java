@@ -114,7 +114,7 @@ public class Controller {
                             replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \4. Help \n5. Kritik dan Saran \n6. Tentang");
                         }else if (textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                             replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1. _____ \n2. _____ \n3. _____");
-                        }else if (textMessageContent.getText() == Kunci1[i]) {
+                        }else if (textMessageContent.getText().equalsIgnoreCase(Kunci1[i])) {
                             Jawaban1[i] = textMessageContent.getText();
                             replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi:" + Jawaban1[i]);
                         }else {
