@@ -97,13 +97,15 @@ public class Controller {
                     }else if(textMessageContent.getText().equalsIgnoreCase("Menu")) {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \4. Help \n5. Kritik dan Saran \n6. Tentang");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")){
-                        String[] Kunci1 = new String[3];
-                        String[] Jawaban1 = new String[3];
-                        Kunci1 = new String[]{"Tsuwaibah", "Halimah", "Bani Saad"};
-                        Jawaban1 = new String[]{"Tsuwaibah Al-Aslamiyah", "Halimah As-Sadiyah", "Perempuan Bani Saad"};
-                        for(int i = 0; i < Kunci1.length; i++){
-                            if(Kunci1 [i] == textMessageContent.getText()){
-                                Jawaban1 [i] = textMessageContent.getText();
+                        replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1. _____ \n2. _____ \n3. _____");
+                            String[] Kunci1 = new String[3];
+                            String[] Jawaban1 = new String[3];
+                            Kunci1 = new String[]{"Tsuwaibah", "Halimah", "Bani Saad"};
+                            Jawaban1 = new String[]{"Tsuwaibah Al-Aslamiyah", "Halimah As-Sadiyah", "Perempuan Bani Saad"};
+                            for(int i = 0; i < Kunci1.length; i++){
+                                if(Kunci1 [i] == textMessageContent.getText()){
+                                    Jawaban1 [i] = textMessageContent.getText();
+                                    replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: "+i+"." + Jawaban1 [i]);
                             }
                         }
 
