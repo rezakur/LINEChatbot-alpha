@@ -47,6 +47,8 @@ public class Controller {
     @Qualifier("lineSignatureValidator")
     private LineSignatureValidator lineSignatureValidator;
     private String textMsg;
+    private String Kunci1;
+    private String Jawaban1;
 
 
     @RequestMapping(value="/webhook", method= RequestMethod.POST)
@@ -94,7 +96,20 @@ public class Controller {
                         replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Menu")) {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \4. Help \n5. Kritik dan Saran \n6. Tentang");
-                    }else{
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")){
+                        String[] Kunci1 = new String[3];
+                        String[] Jawaban1 = new String[3];
+                        Kunci1 = new String[]{"Tsuwaibah", "Halimah", "Bani Saad"};
+                        Jawaban1 = new String[]{"Tsuwaibah Al-Aslamiyah", "Halimah As-Sadiyah", "Perempuan Bani Saad"};
+                        for(int i = 0; i < Kunci1.length; i++){
+                            if(Kunci1 [i] == textMessageContent.getText()){
+                                Jawaban1 [i] = textMessageContent.getText();
+                            }
+                        }
+
+                    }
+
+                    else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
 
