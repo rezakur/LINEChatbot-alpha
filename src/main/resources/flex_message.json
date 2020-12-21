@@ -98,12 +98,20 @@
           {
             "type": "button",
             "action": {
-              "type": "message",
-              "label": "KUIS",
-              "text": "Kuis Masa Kelahiran"
+              "type": "uri",
+              "label": "DOWNLOAD PDF",
+              "uri": "http://linecorp.com/"
             },
             "style": "link",
             "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "KUIS",
+              "text": "Kuis Masa Kelahiran"
+            }
           }
         ]
       }
@@ -200,22 +208,124 @@
           {
             "type": "button",
             "action": {
-              "type": "message",
-              "label": "KUIS",
-              "text": "Kuis Masa Kecil"
+              "type": "uri",
+              "label": "DOWNLOAD PDF",
+              "uri": "http://linecorp.com/"
             },
             "height": "sm",
             "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "KUIS",
+              "text": "Kuis Masa Kecil"
+            }
           }
         ]
       }
     },
     {
       "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "https://cdn.pixabay.com/photo/2015/03/26/10/29/sand-dunes-691431_960_720.jpg",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
       "body": {
         "type": "box",
         "layout": "vertical",
-        "contents": []
+        "contents": [
+          {
+            "type": "text",
+            "text": "Pra Kenabian",
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Place",
+                    "flex": 1,
+                    "size": "sm",
+                    "color": "#aaaaaa"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Mekah",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Time",
+                    "flex": 1,
+                    "size": "sm",
+                    "color": "#aaaaaa"
+                  },
+                  {
+                    "type": "text",
+                    "text": "12 Tahun - 40 Tahun",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666"
+                  }
+                ],
+                "offsetTop": "sm"
+              }
+            ],
+            "offsetTop": "lg"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "BACA LEBIH LANJUT",
+              "uri": "http://linecorp.com/"
+            },
+            "offsetTop": "xxl"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "DOWNLOAD PDF",
+              "uri": "http://linecorp.com/"
+            },
+            "offsetTop": "md"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "KUIS",
+              "text": "Kuis Pra Kenabian"
+            }
+          }
+        ]
       }
     }
   ]
