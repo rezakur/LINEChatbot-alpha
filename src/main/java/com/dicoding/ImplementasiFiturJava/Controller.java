@@ -316,21 +316,21 @@ public class Controller {
         }
     }
 
-  private void handleOneOnOneChats(MessageEvent event) {
+  //private void handleOneOnOneChats(MessageEvent event) {
 
-       if  (event.getMessage() instanceof AudioMessageContent
-              || event.getMessage() instanceof ImageMessageContent
-              || event.getMessage() instanceof VideoMessageContent
-              || event.getMessage() instanceof FileMessageContent
-        ) {
-            handleContentMessage(event);
+       //if  (event.getMessage() instanceof AudioMessageContent
+              //|| event.getMessage() instanceof ImageMessageContent
+              //|| event.getMessage() instanceof VideoMessageContent
+              //|| event.getMessage() instanceof FileMessageContent
+        //) {
+            //handleContentMessage(event);
        //} //else if(event.getMessage() instanceof TextMessageContent) {
          //handleTextMessage(event);
-        } else {
-            replyText(event.getReplyToken(), "Unknown Message");
-        }
+       //} else {
+         //   replyText(event.getReplyToken(), "Unknown Message");
+       // }
 
-    }
+  //  }
 
     private void handleContentMessage(MessageEvent event) {
         String baseURL     = "https://al-munawwir.herokuapp.com";
