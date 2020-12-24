@@ -132,7 +132,8 @@ public class Controller {
 
                     List<Message> msgArray2 = new ArrayList<>();
                     msgArray2.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
-                    msgArray.add(new StickerMessage("1", "114"));
+                    msgArray2.add(new StickerMessage("1", "114"));
+                    //msgArray2.add(new StickerMessage("1", "114"));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
