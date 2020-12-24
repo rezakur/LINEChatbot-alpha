@@ -151,12 +151,16 @@ public class Controller {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \n4. Help \n5. Kritik dan Saran \n6. Tentang");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
-                        if ((textMessageContent.getText().equalsIgnoreCase("Senin"))) {
-                                replyText(messageEvent.getReplyToken(), "BENAR");
-                            }else{
-                                replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
-                            }
-
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))) {
+                        replyText(messageEvent.getReplyToken(), "BENAR");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Kamis"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
                     }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
