@@ -54,7 +54,7 @@ public class Controller {
     @RequestMapping(value="/webhook", method= RequestMethod.POST)
     public ResponseEntity<String> callback(
             @RequestHeader("X-Line-Signature") String xLineSignature,
-            @RequestBody String eventsPayload, FlexContainer flexContainer)
+            @RequestBody String eventsPayload)
     {
         try {
             if (!lineSignatureValidator.validateSignature(eventsPayload.getBytes(), xLineSignature)) {
@@ -127,7 +127,11 @@ public class Controller {
 
                     List<Message> msgArray = new ArrayList<>();
                     msgArray.add(new TextMessage("BENAR"));
-                    msgArray.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
+                    msgArray.add(new StickerMessage("1", "114"));
+
+                    List<Message> msgArray2 = new ArrayList<>();
+                    msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
+                    msgArray.add(new StickerMessage("1", "114"));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
@@ -151,13 +155,13 @@ public class Controller {
                     }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))) {
                         replyMessage(messageEvent.getReplyToken(), msgArray, event);
                     }else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
-                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
                     }else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
-                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
                     }else if((textMessageContent.getText().equalsIgnoreCase("Kamis"))){
-                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
                     }else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
-                        replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
                     }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
@@ -296,7 +300,10 @@ public class Controller {
         reply(replyMessage);
     }
 
-
+    private void replyMessage2(String replyToken, List<Message> msgArray2, Object event) {
+        ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray2);
+        reply(replyMessage);
+    }
 
     private void sendMulticast(Set<String> sourceUsers, String txtMessage){
         TextMessage message = new TextMessage(txtMessage);
