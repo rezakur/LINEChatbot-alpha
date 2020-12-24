@@ -164,23 +164,73 @@ public class Controller {
                             String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
                             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
-                            msgArray.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
+                            msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
                             ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
                             reply(replyMessage);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
 
-                    }//else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
-                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    //}else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
-                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    //}else if((textMessageContent.getText().equalsIgnoreCase("Kamis"))){
-                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    //}else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
-                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                   // }
-                    else{
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Kamis"))){
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                   }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
 
