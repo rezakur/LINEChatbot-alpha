@@ -49,6 +49,7 @@ public class Controller {
     private String textMsg;
     private String[] Kunci1;
     private String[] Jawaban1;
+    private FlexContainer flexContainer;
 
 
     @RequestMapping(value="/webhook", method= RequestMethod.POST)
@@ -131,7 +132,6 @@ public class Controller {
 
                     List<Message> msgArray2 = new ArrayList<>();
                     msgArray2.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
-                    FlexContainer flexContainer = null;
                     msgArray2.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
