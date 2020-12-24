@@ -128,9 +128,9 @@ public class Controller {
 
                     //}
 
-                    //List<Message> msgArray = new ArrayList<>();
-                    //msgArray.add(new TextMessage("BENAR"));
-                    //msgArray.add(new FlexMessage);
+                    List<Message> msgArray = new ArrayList<>();
+                    msgArray.add(new TextMessage("BENAR"));
+                    msgArray.add(new StickerMessage("1", "114"));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
@@ -152,7 +152,7 @@ public class Controller {
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
                     }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))) {
-                        replyText(messageEvent.getReplyToken(), "BENAR");
+                        new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     }else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
                         replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
                     }else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
