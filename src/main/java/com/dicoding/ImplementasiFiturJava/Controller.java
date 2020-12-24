@@ -131,7 +131,8 @@ public class Controller {
 
                     List<Message> msgArray2 = new ArrayList<>();
                     msgArray2.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
-                    msgArray2.add(new StickerMessage("1", "114"));
+                    FlexContainer flexContainer = null;
+                    msgArray2.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
@@ -340,21 +341,21 @@ public class Controller {
         }
     }
 
-  private void handleOneOnOneChats(MessageEvent event) {
+  //private void handleOneOnOneChats(MessageEvent event) {
 
-       if  (event.getMessage() instanceof AudioMessageContent
-              || event.getMessage() instanceof ImageMessageContent
-              || event.getMessage() instanceof VideoMessageContent
-              || event.getMessage() instanceof FileMessageContent
-        ) {
-            handleContentMessage(event);
-       } else if(event.getMessage() instanceof TextMessageContent) {
-         handleTextMessage(event);
-       } else {
-            replyText(event.getReplyToken(), "Unknown Message");
-        }
+       //if  (event.getMessage() instanceof AudioMessageContent
+             // || event.getMessage() instanceof ImageMessageContent
+             // || event.getMessage() instanceof VideoMessageContent
+             // || event.getMessage() instanceof FileMessageContent
+       // ) {
+        //    handleContentMessage(event);
+      // } else if(event.getMessage() instanceof TextMessageContent) {
+         //handleTextMessage(event);
+       //} else {
+            //replyText(event.getReplyToken(), "Unknown Message");
+        //}
 
-    }
+   // }
 
     private void handleContentMessage(MessageEvent event) {
         String baseURL     = "https://al-munawwir.herokuapp.com";
@@ -367,15 +368,15 @@ public class Controller {
         replyText(event.getReplyToken(), textMsg);
     }
 
-    private void handleTextMessage(MessageEvent event) {
-        TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
+    //private void handleTextMessage(MessageEvent event) {
+        //TextMessageContent textMessageContent = (TextMessageContent) event.getMessage();
 
-        if (textMessageContent.getText().toLowerCase().contains("Belajar Sirah")) {
-          replyFlexMessage(event.getReplyToken());
-        } else {
-            replyText(event.getReplyToken(), textMessageContent.getText());
-        }
-    }
+        //if (textMessageContent.getText().toLowerCase().contains("Belajar Sirah")) {
+          //replyFlexMessage(event.getReplyToken());
+        //} else {
+           // replyText(event.getReplyToken(), textMessageContent.getText());
+       // }
+   // }
 
     private void handleGroupRoomChats(MessageEvent event) {
         if(!event.getSource().getUserId().isEmpty()) {
