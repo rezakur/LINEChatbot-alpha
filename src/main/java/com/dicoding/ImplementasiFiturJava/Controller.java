@@ -8,8 +8,6 @@ import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.message.*;
-import com.linecorp.bot.model.event.source.GroupSource;
-import com.linecorp.bot.model.event.source.RoomSource;
 import com.linecorp.bot.model.message.FlexMessage;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
@@ -32,7 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.IntStream;
 
 import static java.lang.String.valueOf;
 
@@ -131,7 +128,7 @@ public class Controller {
                     List<Message> msgArray = new ArrayList<>();
                     msgArray.add(new TextMessage("BENAR"));
                     msgArray.add(new StickerMessage("1", "114"));
-                    ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
+                    //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
 
@@ -152,7 +149,7 @@ public class Controller {
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
                     }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))) {
-                        replyText(messageEvent.getReplyToken(), textMessageContent.getText());
+                        replyMessage(messageEvent.getReplyToken(), msgArray, event);
                     }else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
                         replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
                     }else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
@@ -202,6 +199,8 @@ public class Controller {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+
 
     @RequestMapping(value = "/content/{id}", method = RequestMethod.GET)
     public ResponseEntity content(
@@ -289,6 +288,11 @@ public class Controller {
     private void replySticker(String replyToken, String packageId, String stickerId){
         StickerMessage stickerMessage = new StickerMessage(packageId, stickerId);
         ReplyMessage replyMessage = new ReplyMessage(replyToken, stickerMessage);
+        reply(replyMessage);
+    }
+
+    private void replyMessage(String replyToken, List<Message> msgArray, Object event) {
+        ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
         reply(replyMessage);
     }
 
@@ -408,5 +412,7 @@ public class Controller {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
 
 }}
