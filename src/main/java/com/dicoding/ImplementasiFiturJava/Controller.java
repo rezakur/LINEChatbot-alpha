@@ -140,18 +140,18 @@ public class Controller {
 
                     if(textMessageContent.getText().equalsIgnoreCase("Library")) {
                         replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di http://bit.ly/almunawwir_library");
-                    }else if(textMessageContent.getText().equalsIgnoreCase("Referensi")) {
-                        replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi \n2. Masa Kecil \nIsi");
+                    //}else if(textMessageContent.getText().equalsIgnoreCase("Referensi")) {
+                        //replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi \n2. Masa Kecil \nIsi");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
                         replyFlexMessage(((MessageEvent<?>) event).getReplyToken());
                     }else if(textMessageContent.getText().equalsIgnoreCase("Help")) {
-                        replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
+                        replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang berfungsi untuk mempelajarin sirah Nabawiyah secara praktis dengan LINE. Silahkan balas pesan ini dengan \"menu\" untuk memunculkan menu dan menikmati fitur dari kami. Al-munawwir memiliki fitur: \n1. Baca Sirah \n  Fitur ini menyediakan sirah yang dapat dibaca secara online maupun diunduh dengan format file pdf juga dilengkapi dengan kuis \n2. Library \n  Fitur ini memiliki sumber penulisan sirah dan rujukan sirah Nabawiyah lain yang dapat diunduh \n3. Help \n  Fitur ini adalah tempat user mendapatkan panduan penggunaan \n4. Kritik dan Saran \n  Melalui fitur ini kami menerima kritik dan saran agar dapat mengembangkan chatbot ini dengan baik \n5. Tentang \n  Tempat dimana user bisa membaca tentang kami");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
                         replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke munawwirain2@gmail.com");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Tentang")) {
                         replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Menu")) {
-                        replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \n4. Help \n5. Kritik dan Saran \n6. Tentang");
+                        replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Help \n4. Kritik dan Saran \n5. Tetang");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
                     }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))){
