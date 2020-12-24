@@ -161,7 +161,7 @@ public class Controller {
                             msgArray.add(new TextMessage("BENAR"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
-                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_3.json"));
                             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
                             msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
@@ -176,7 +176,7 @@ public class Controller {
                             msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
-                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_3.json"));
                             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
                             msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
@@ -191,7 +191,7 @@ public class Controller {
                             msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
-                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_3.json"));
                             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
                             msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
@@ -206,7 +206,7 @@ public class Controller {
                             msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
-                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_3.json"));
                             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
                             msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
@@ -215,13 +215,13 @@ public class Controller {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                    }else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))) {
                         try {
                             List<Message> msgArray = new ArrayList<>();
                             msgArray.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
-                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_3.json"));
                             FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
 
                             msgArray.add(new FlexMessage("Kuis 1 Soal 2", flexContainer));
@@ -230,7 +230,15 @@ public class Controller {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                   }else{
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Abdul Muthalib"))){
+                        replyText(messageEvent.getReplyToken(), "BENAR");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Ubay bin Khalaf"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Abu Jahal"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Mughirah bin Syu'bah"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
+                    }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
 
@@ -487,5 +495,22 @@ public class Controller {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-}}
+        private void replyFlexMessage3(String replyToken) {
+            try {
+                ClassLoader classLoader = getClass().getClassLoader();
+                String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_3.json"));
+
+
+                ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+                FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+                ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Kuis 1 Soal 2", flexContainer));
+                reply(replyMessage);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+    }
+}
