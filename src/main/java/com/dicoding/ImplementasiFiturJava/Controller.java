@@ -54,7 +54,7 @@ public class Controller {
     @RequestMapping(value="/webhook", method= RequestMethod.POST)
     public ResponseEntity<String> callback(
             @RequestHeader("X-Line-Signature") String xLineSignature,
-            @RequestBody String eventsPayload)
+            @RequestBody String eventsPayload, FlexContainer flexContainer)
     {
         try {
             if (!lineSignatureValidator.validateSignature(eventsPayload.getBytes(), xLineSignature)) {
@@ -127,7 +127,7 @@ public class Controller {
 
                     List<Message> msgArray = new ArrayList<>();
                     msgArray.add(new TextMessage("BENAR"));
-                    msgArray.add(new StickerMessage("1", "114"));
+                    msgArray.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
