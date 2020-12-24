@@ -11,6 +11,7 @@ import com.linecorp.bot.model.event.message.*;
 import com.linecorp.bot.model.event.source.GroupSource;
 import com.linecorp.bot.model.event.source.RoomSource;
 import com.linecorp.bot.model.message.FlexMessage;
+import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.message.TextMessage;
@@ -83,13 +84,13 @@ public class Controller {
                     //.findFirst()
                     //.orElse(-1);
 
-                    Jawaban1 = new String[]{" ", " ", " "};
-                    Kunci1 = new String[]{"Tsuwaibah", "Halimah", "Bani Saad"};
-                    String[] Jawaban1 = new String[3];
-                    String[] Kunci1 = new String[3];
                     //Jawaban1 = new String[]{" ", " ", " "};
-                    int i;
-                    for (i = 0; i < Kunci1.length; i++) ;
+                    //Kunci1 = new String[]{"Tsuwaibah", "Halimah", "Bani Saad"};
+                    //String[] Jawaban1 = new String[3];
+                    //String[] Kunci1 = new String[3];
+                    //Jawaban1 = new String[]{" ", " ", " "};
+                    //int i;
+                    //for (i = 0; i < Kunci1.length; i++) ;
 
 
                     //switch(textMessageContent.getText().toLowerCase(Locale.ROOT)){
@@ -128,35 +129,36 @@ public class Controller {
                     //}
 
                     //List<Message> msgArray = new ArrayList<>();
-                    //msgArray.add(new TextMessage("tes dicoba"));
-                    //msgArray.add(new StickerMessage("1", "114"));
+                    //msgArray.add(new TextMessage("BENAR"));
+                    //msgArray.add(new FlexMessage);
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
 
 
-                    if (textMessageContent.getText().equalsIgnoreCase("Library")) {
+                    if(textMessageContent.getText().equalsIgnoreCase("Library")) {
                         replyText(messageEvent.getReplyToken(), "Free e-Book Sirah Nabawiyah bisa Anda download di http://bit.ly/almunawwir_library");
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Referensi")) {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Referensi")) {
                         replyText(messageEvent.getReplyToken(), "Referensi yang dipakai dalam penulisan Sirah Nabawiyah adalah sebagai berikut. \n1. Masa Kelahiran \nNanti diisi daftar refensi \n2. Masa Kecil \nIsi");
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Baca Sirah")) {
                         replyFlexMessage(((MessageEvent<?>) event).getReplyToken());
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Help")) {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Help")) {
                         replyText(messageEvent.getReplyToken(), "nanti diisi bantuan penggunaan personal ataupun grup");
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Kritik dan Saran")) {
                         replyText(messageEvent.getReplyToken(), "Kami sangat membutuhkan kritik dan saran Anda. Anda dapat mengirimkannya ke munawwirain2@gmail.com");
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Tentang")) {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Tentang")) {
                         replyText(messageEvent.getReplyToken(), "al-munawwir adalah chatbot yang dibuat oleh OrionTechnoX untuk membantu kaum muslimin belajar Sirah Nabawiyah secara praktis menggunakan chat app");
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Menu")) {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Menu")) {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Referensi \n4. Help \n5. Kritik dan Saran \n6. Tentang");
-                    } else if (textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
-                        replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1. _____ \n2. _____ \n3. _____");
-                    } else if (textMessageContent.getText().equals(valueOf(Kunci1[i]))) {
-                        Jawaban1[i] = textMessageContent.getText();
-                        replyText(messageEvent.getReplyToken(), "Nama-Nama Ibu Susu Nabi: \n1."+ Jawaban1[i]);
-                    } else {
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
+                        replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
+                        if ((textMessageContent.getText().equalsIgnoreCase("Senin"))) {
+                                replyText(messageEvent.getReplyToken(), "BENAR");
+                            }else{
+                                replyText(messageEvent.getReplyToken(), "SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162");
+                            }
+
+                    }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
-
-
                     }
 
 
@@ -286,6 +288,8 @@ public class Controller {
         reply(replyMessage);
     }
 
+
+
     private void sendMulticast(Set<String> sourceUsers, String txtMessage){
         TextMessage message = new TextMessage(txtMessage);
         Multicast multicast = new Multicast(sourceUsers, message);
@@ -385,4 +389,20 @@ public class Controller {
         }
     }
 
-}
+    private void replyFlexMessage2(String replyToken) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+
+
+            ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Kuis 1 Soal 1", flexContainer));
+            reply(replyMessage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+}}
