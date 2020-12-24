@@ -126,13 +126,13 @@ public class Controller {
 
                     //}
 
-                    List<Message> msgArray = new ArrayList<>();
-                    msgArray.add(new TextMessage("BENAR"));
-                    msgArray.add(new StickerMessage("1", "114"));
+                   // List<Message> msgArray = new ArrayList<>();
+                    //msgArray.add(new TextMessage("BENAR"));
+                    //msgArray.add(new StickerMessage("1", "114"));
 
-                    List<Message> msgArray2 = new ArrayList<>();
-                    msgArray2.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
-                    msgArray2.add(new StickerMessage("1", "114"));
+                    //List<Message> msgArray2 = new ArrayList<>();
+                    //msgArray2.add(new TextMessage("SALAH. Nabi ﷺ lahir pada hari Senin berdasarkan HR. Muslim No.1162"));
+                    //msgArray2.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
                     //msgArray2.add(new StickerMessage("1", "114"));
                     //ReplyMessage replyMessage = new ReplyMessage(((MessageEvent<?>) event).getReplyToken(), msgArray);
                     //reply(replyMessage);
@@ -155,16 +155,32 @@ public class Controller {
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
                     }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))){
-                        replyMessage(messageEvent.getReplyToken(), msgArray, event);
-                    }else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
-                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    }else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
-                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    }else if((textMessageContent.getText().equalsIgnoreCase("Kamis"))){
-                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    }else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
-                        replyMessage(messageEvent.getReplyToken(), msgArray2, event);
-                    }else{
+                        //replyMessage(messageEvent.getReplyToken(), msgArray, event);
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("BENAR"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_2.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 1 Soal 1", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }//else if((textMessageContent.getText().equalsIgnoreCase("Selasa"))){
+                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
+                    //}else if((textMessageContent.getText().equalsIgnoreCase("Rabu"))){
+                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
+                    //}else if((textMessageContent.getText().equalsIgnoreCase("Kamis"))){
+                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
+                    //}else if((textMessageContent.getText().equalsIgnoreCase("Jum'at"))){
+                        //replyMessage(messageEvent.getReplyToken(), msgArray2, event);
+                   // }
+                    else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
 
