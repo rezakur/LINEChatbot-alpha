@@ -29,8 +29,8 @@
         "height": "sm",
         "action": {
           "type": "message",
-          "label": "Ubay bin Khalaf",
-          "text": "Ubay bin Khalaf"
+          "label": "Hatake Kakashi",
+          "text": "Hatake Kakashi"
         }
       },
       {
@@ -56,8 +56,8 @@
         "type": "button",
         "action": {
           "type": "message",
-          "text": "Abu Jahal",
-          "label": "Abu Jahal"
+          "text": "Umayyah bin Khalaf",
+          "label": "Umayyah bin Khalaf"
         }
       }
     ],

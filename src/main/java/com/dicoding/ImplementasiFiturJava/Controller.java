@@ -234,8 +234,8 @@ public class Controller {
                         replyText(messageEvent.getReplyToken(), "BENAR");
                     }else if((textMessageContent.getText().equalsIgnoreCase("Ubay bin Khalaf"))){
                         replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
-                    }else if((textMessageContent.getText().equalsIgnoreCase("Abu Jahal"))){
-                        replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Hatake Kakashi"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu. Oalah wibu wibu");
                     }else if((textMessageContent.getText().equalsIgnoreCase("Mughirah bin Syu'bah"))){
                         replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
                     }else{
