@@ -334,7 +334,7 @@ public class Controller {
                     }else if((textMessageContent.getText().equalsIgnoreCase("Khadijah binti As'ad"))) {
                         try {
                             List<Message> msgArray = new ArrayList<>();
-                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah binti Khuwailid"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
                             String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
@@ -349,7 +349,7 @@ public class Controller {
                     }else if((textMessageContent.getText().equalsIgnoreCase("Maimunah binti Al-Harits"))) {
                         try {
                             List<Message> msgArray = new ArrayList<>();
-                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah binti Khuwailid"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
                             String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
@@ -364,7 +364,7 @@ public class Controller {
                     }else if((textMessageContent.getText().equalsIgnoreCase("Hafsah binti Umar"))) {
                         try {
                             List<Message> msgArray = new ArrayList<>();
-                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah binti Khuwailid"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
                             String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
@@ -379,7 +379,7 @@ public class Controller {
                     }else if((textMessageContent.getText().equalsIgnoreCase("Aisyah binti Abu Bakar"))) {
                         try {
                             List<Message> msgArray = new ArrayList<>();
-                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah binti Khuwailid"));
 
                             ClassLoader classLoader = getClass().getClassLoader();
                             String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
