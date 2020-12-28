@@ -8,6 +8,9 @@ import com.linecorp.bot.model.Multicast;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.event.message.*;
+import com.linecorp.bot.model.event.source.GroupSource;
+import com.linecorp.bot.model.event.source.RoomSource;
+import com.linecorp.bot.model.event.source.UserSource;
 import com.linecorp.bot.model.message.FlexMessage;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
@@ -32,6 +35,7 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 import static java.lang.String.valueOf;
+
 
 
 @RestController
@@ -351,6 +355,7 @@ public class Controller {
        return new ResponseEntity<String>("Push message:"+textMsg+"\nsent to: "+userId, HttpStatus.OK);
     }
 
+
     private void reply(ReplyMessage replyMessage) {
         try {
             lineMessagingClient.replyMessage(replyMessage).get();
@@ -513,4 +518,6 @@ public class Controller {
                 throw new RuntimeException(e);
             }
     }
+
+
 }
