@@ -158,6 +158,10 @@ public class Controller {
                         replyText(messageEvent.getReplyToken(), "Menu \n1. Baca Sirah \n2. Library \n3. Help \n4. Kritik dan Saran \n5. Tetang");
                     }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kelahiran")) {
                         replyFlexMessage2(((MessageEvent<?>) event).getReplyToken());
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Masa Kecil")) {
+                        replyFlexMessage4(((MessageEvent<?>) event).getReplyToken());
+                    }else if(textMessageContent.getText().equalsIgnoreCase("Kuis Pra Kenabian")) {
+                        replyFlexMessage6(((MessageEvent<?>) event).getReplyToken());
                     }else if((textMessageContent.getText().equalsIgnoreCase("Senin"))){
                         //replyMessage(messageEvent.getReplyToken(), msgArray, event);
                         try {
