@@ -242,6 +242,161 @@ public class Controller {
                         replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu. Oalah wibu wibu");
                     }else if((textMessageContent.getText().equalsIgnoreCase("Mughirah bin Syu'bah"))){
                         replyText(messageEvent.getReplyToken(), "SALAH. Utusan Quraisy untuk berunding dengan Abrahah adalah Abdul Muthalib sebagai pemimpin Quraisy pada saat itu");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Tsuwaibah Al-Aslamiyah"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("BENAR"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_5.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 2 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Ummi Maktum"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Ibu susu Nabi ﷺ antara lain adalah Tsuwaibah Al-Aslamiyah, Halimah Al-Sa’diyah, dan seorang perempuan dari Bani Sa'ad"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_5.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 2 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Halimah Ash-Shafawiyah"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Ibu susu Nabi ﷺ antara lain adalah Tsuwaibah Al-Aslamiyah, Halimah Al-Sa’diyah, dan seorang perempuan dari Bani Sa'ad"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_5.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 2 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Ummu Jamil"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Ibu susu Nabi ﷺ antara lain adalah Tsuwaibah Al-Aslamiyah, Halimah Al-Sa’diyah, dan seorang perempuan dari Bani Sa'ad"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_5.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 2 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Abdullah bin Abdul Muthalib"))){
+                        replyText(messageEvent.getReplyToken(), "BENAR. Abdullah bin Abdul Muthalib adalah nama ayah Nabi ﷺ");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Hamzah bin Abdul Muthalib"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Hamzah bin Abdul Muthalib adalah salah satu paman Nabi ﷺ");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Abu Thalib bin Abdul Muthalib"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Abu Thalib bin Abdul Muthalib adalah salah satu paman Nabi ﷺ");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Abu Lahab bin Abdul Muthalib"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Abu Lahab bin Abdul Muthalib adalah salah satu paman Nabi ﷺ");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Abbas bin Abdul Muthalib"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Abbas bin Abdul Muthalib adalah salah satu paman Nabi ﷺ");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Khadijah binti Khuwailid"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("BENAR"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 3 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Khadijah binti As'ad"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 3 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Maimunah binti Al-Harits"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 3 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Hafsah binti Umar"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 3 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Aisyah binti Abu Bakar"))) {
+                        try {
+                            List<Message> msgArray = new ArrayList<>();
+                            msgArray.add(new TextMessage("SALAH. Istri pertama Nabi ﷺ adalah Ummul Mu'minin Khadijah Khuwailid"));
+
+                            ClassLoader classLoader = getClass().getClassLoader();
+                            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
+                            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+                            msgArray.add(new FlexMessage("Kuis 3 Soal 2", flexContainer));
+                            ReplyMessage replyMessage = new ReplyMessage(messageEvent.getReplyToken(), msgArray);
+                            reply(replyMessage);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Qushay"))){
+                        replyText(messageEvent.getReplyToken(), "BENAR. Nama lengkap Nabi ﷺ adalah Muhammad  bin ‘Abdillāh  bin  ‘Abdil  Muththalib  bin  Hāsyim  bin  ‘Abdi  Manaf  bin  Qushay  bin  Kilāb sementara Khadijah adalah  Khadījah  binti  Khuwailid  bin  As’ad  bin Abdil  ‘Uzza  bin  Qushay  bin  Kilāb");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Murrah"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nama lengkap Nabi ﷺ adalah Muhammad  bin ‘Abdillāh  bin  ‘Abdil  Muththalib  bin  Hāsyim  bin  ‘Abdi  Manaf  bin  Qushay  bin  Kilāb sementara Khadijah adalah  Khadījah  binti  Khuwailid  bin  As’ad  bin Abdil  ‘Uzza  bin  Qushay  bin  Kilāb");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Kilab"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nama lengkap Nabi ﷺ adalah Muhammad  bin ‘Abdillāh  bin  ‘Abdil  Muththalib  bin  Hāsyim  bin  ‘Abdi  Manaf  bin  Qushay  bin  Kilāb sementara Khadijah adalah  Khadījah  binti  Khuwailid  bin  As’ad  bin Abdil  ‘Uzza  bin  Qushay  bin  Kilāb");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Quraisy"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nama lengkap Nabi ﷺ adalah Muhammad  bin ‘Abdillāh  bin  ‘Abdil  Muththalib  bin  Hāsyim  bin  ‘Abdi  Manaf  bin  Qushay  bin  Kilāb sementara Khadijah adalah  Khadījah  binti  Khuwailid  bin  As’ad  bin Abdil  ‘Uzza  bin  Qushay  bin  Kilāb");
+                    }else if((textMessageContent.getText().equalsIgnoreCase("Sa'ad"))){
+                        replyText(messageEvent.getReplyToken(), "SALAH. Nama lengkap Nabi ﷺ adalah Muhammad  bin ‘Abdillāh  bin  ‘Abdil  Muththalib  bin  Hāsyim  bin  ‘Abdi  Manaf  bin  Qushay  bin  Kilāb sementara Khadijah adalah  Khadījah  binti  Khuwailid  bin  As’ad  bin Abdil  ‘Uzza  bin  Qushay  bin  Kilāb");
                     }else{
                         replyText(messageEvent.getReplyToken(), "Maaf, saya tidak paham. Mohon balas sesuai daftar menu. Jika ingin mendapatkan daftar menu balas \"menu\" atau balas \"help\" untuk mendapat bantuan penggunaan");
                     }
@@ -519,5 +674,72 @@ public class Controller {
             }
     }
 
+    private void replyFlexMessage4(String replyToken) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_4.json"));
+
+
+            ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Kuis 2 Soal 1", flexContainer));
+            reply(replyMessage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void replyFlexMessage5(String replyToken) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_5.json"));
+
+
+            ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Kuis 2 Soal 2", flexContainer));
+            reply(replyMessage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void replyFlexMessage6(String replyToken) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_6.json"));
+
+
+            ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Kuis 3 Soal 1", flexContainer));
+            reply(replyMessage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void replyFlexMessage7(String replyToken) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String flexTemplate = IOUtils.toString(classLoader.getResourceAsStream("flex_message_7.json"));
+
+
+            ObjectMapper objectMapper = ModelObjectMapper.createNewObjectMapper();
+            FlexContainer flexContainer = objectMapper.readValue(flexTemplate, FlexContainer.class);
+
+
+            ReplyMessage replyMessage = new ReplyMessage(replyToken, new FlexMessage("Kuis 3 Soal 2", flexContainer));
+            reply(replyMessage);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

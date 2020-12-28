@@ -1,0 +1,75 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Istri pertama Nabi ﷺ ",
+        "weight": "bold",
+        "size": "md",
+        "position": "relative",
+        "wrap": true
+      }
+    ],
+    "spacing": "none",
+    "margin": "none",
+    "height": "50px"
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "text": "Aisyah binti Abu Bakar",
+          "label": "Aisyah binti Abu Bakar"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "text": "Hafsah binti Umar",
+          "label": "Hafsah binti Umar"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "Maimunah binti Al-Harits",
+          "text": "Maimunah binti Al-Harits"
+        },
+        "style": "secondary"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "text": "Khadijah binti As'ad",
+          "label": "Khadijah binti As'ad"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "Khadijah binti Khuwailid",
+          "text": "Khadijah binti Khuwailid"
+        },
+        "style": "secondary"
+      }
+    ],
+    "flex": 0
+  }
+}

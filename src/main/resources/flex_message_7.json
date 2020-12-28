@@ -1,0 +1,75 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Nasab Nabi ﷺ dan Khadijah bertemu pada ayah dari kakeknya kakek mereka yang bernama",
+        "weight": "bold",
+        "size": "md",
+        "position": "relative",
+        "wrap": true
+      }
+    ],
+    "spacing": "none",
+    "margin": "none",
+    "height": "100px"
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "text": "Murrah",
+          "label": "Murrah"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "text": "KIlab",
+          "label": "Kilab"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "Qushay",
+          "text": "Qushay"
+        },
+        "style": "secondary"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "text": "Quraisy",
+          "label": "Quraisy"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "Sa'ad",
+          "text": "Sa'ad"
+        },
+        "style": "secondary"
+      }
+    ],
+    "flex": 0
+  }
+}

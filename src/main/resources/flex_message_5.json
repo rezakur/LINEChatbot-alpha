@@ -1,0 +1,75 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Yang bukan nama paman Nabi ﷺ ",
+        "weight": "bold",
+        "size": "md",
+        "position": "relative",
+        "wrap": true
+      }
+    ],
+    "spacing": "none",
+    "margin": "none",
+    "height": "50px"
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "text": "Abbas bin Abdul Muthalib",
+          "label": "Abbas bin Abdul Muthalib"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "text": "Abu Lahab bin Abdul Muthalib",
+          "label": "Abu Lahab bin Abdul Muthalib"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "Hamzah bin Abdul Muthalib",
+          "text": "Hamzah bin Abdul Muthalib"
+        },
+        "style": "secondary"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "text": "Abdullah bin Abdul Muthalib",
+          "label": "Abdullah bin Abdul Muthalib"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "Abu Thalib bin Abdul Muthalib",
+          "text": "Abu Thalib bin Abdul Muthalib"
+        },
+        "style": "secondary"
+      }
+    ],
+    "flex": 0
+  }
+}
